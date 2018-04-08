@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Ang Li
@@ -15,7 +16,9 @@ public class TSPGenerateAlgorithm {
 	private ArrayList<ArrayList<Integer>> distanceList = new ArrayList<>();
 	private ArrayList<Integer> xAxisList;
 	private ArrayList<Integer> yAxisList;
-	private int nodeNum;
+	private ArrayList<Integer> parentChromosomeList;
+	private ArrayList<Integer> childChromosomeList;
+	private int cityNum;
 
 	private void initDataFromTxtFile(String filename) throws Exception {
 		xAxisList = new ArrayList<>();
@@ -29,11 +32,12 @@ public class TSPGenerateAlgorithm {
 			xAxisList.add(Integer.valueOf(strElement[1]));
 			yAxisList.add(Integer.valueOf(strElement[2]));
 		}
-		nodeNum = xAxisList.size();
+		bufferedReader.close();
+		cityNum = xAxisList.size();
 		// initialize the distance between every two nodes
-		for (int i = 0; i < nodeNum; i++) {
+		for (int i = 0; i < cityNum; i++) {
 			ArrayList<Integer> childDistanceList = new ArrayList<>();
-			for (int j = 0; j < nodeNum; j++)
+			for (int j = 0; j < cityNum; j++)
 				childDistanceList.add(distance(i, j));
 			distanceList.add(childDistanceList);
 		}
@@ -56,11 +60,33 @@ public class TSPGenerateAlgorithm {
 		return dij;
 	}
 
+	// Generate a random chromosome list
+	private ArrayList<Integer> randomChromosome() {
+		ArrayList<Integer> randomChromosomeList = new ArrayList<>();
+		Random random = new Random();
+		int counter = 0;
+		while (counter < cityNum) {
+			int randomCity = Math.abs(random.nextInt() % cityNum);
+			if (!randomChromosomeList.contains(randomCity)) {
+				randomChromosomeList.add(randomCity);
+				counter++;
+			}
+		}
+		return randomChromosomeList;
+	}
+
 	public static void main(String[] args) throws Exception {
 		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm();
 		tspGenerateAlgorithm.initDataFromTxtFile("E:\\EclipseJavaWorkSpace\\TSP\\data\\data.txt");
-		System.out.println(tspGenerateAlgorithm.distanceList);
-		System.out.println(tspGenerateAlgorithm.xAxisList);
-		System.out.println(tspGenerateAlgorithm.yAxisList);
+		
+		//Test initDataFromTxtFile() and distance()
+		// System.out.println(tspGenerateAlgorithm.distanceList);
+		// System.out.println(tspGenerateAlgorithm.xAxisList);
+		// System.out.println(tspGenerateAlgorithm.yAxisList);
+		
+		//Test randomChromosome()
+		// System.out.println(tspGenerateAlgorithm.randomChromosome());
+		// System.out.println(tspGenerateAlgorithm.randomChromosome().size());
+		// System.out.println(tspGenerateAlgorithm.cityNum);
 	}
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * @author Ang Li
+ * @author Ang Li, Xiaohan Zhao
  *
  */
 public class TSPGenerateAlgorithm {

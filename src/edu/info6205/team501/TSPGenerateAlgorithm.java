@@ -11,13 +11,13 @@ import java.util.Random;
 import javax.annotation.Generated;
 
 /**
- * @author Ang Li, Xiaohan Zhao
+ * @author Ang Li
  *
  */
 public class TSPGenerateAlgorithm {
 
-	private final static double P_DEFAULT_CROSS = 0.9;
-	private final static double P_DEFALUT_MUTATION = 0.1;
+	private final static double P_DEFAULT_CROSS = 0.1;
+	private final static double P_DEFALUT_MUTATION = 0;
 
 	private ArrayList<ArrayList<Integer>> distanceList;
 	private ArrayList<Integer> xAxisList;
@@ -29,8 +29,9 @@ public class TSPGenerateAlgorithm {
 	private int cityNum;
 	private int populationNum;
 	private Random random;
-	private int generationCounter;
 	private int shortestDistance;
+	private int generationCounter;
+	private ArrayList<Integer> shortestPathList;
 	private int bestEntity;
 
 	public TSPGenerateAlgorithm(int populationNum) {
@@ -225,6 +226,20 @@ public class TSPGenerateAlgorithm {
 	}
 
 	private void mutation(int target) {
+		int randomCity1, randomCity2, temp, count;
+
+		count = Math.abs(random.nextInt() % populationNum);
+
+		for (int i = 0; i < populationNum; i++) {
+			randomCity1 = Math.abs(random.nextInt() % populationNum);
+			;
+			randomCity2 = Math.abs(random.nextInt() % populationNum);
+			while (randomCity1 == randomCity2)
+				randomCity2 = Math.abs(random.nextInt() % populationNum);
+			temp = childChromosomeList.get(target).get(randomCity1);
+			childChromosomeList.get(target).set(randomCity1, childChromosomeList.get(target).get(randomCity2));
+			childChromosomeList.get(target).set(randomCity2, temp);
+		}
 
 	}
 
@@ -232,13 +247,18 @@ public class TSPGenerateAlgorithm {
 		generationCounter++;
 		bestEntity();
 		select();
-		System.out.println(childChromosomeList);
-		evolution();
-		System.out.println(childChromosomeList);
+		// System.out.println(childChromosomeList);
+		for (int i = 0; i < 1000; i++) {
+			evolution();
+			shortestPathList = parentChromosomeList.get(bestEntity);
+			parentChromosomeList = (ArrayList<ArrayList<Integer>>) childChromosomeList.clone();
+			System.out.println(shortestDistance);
+		}
+		// System.out.println(childChromosomeList);
 	}
 
 	public static void main(String[] args) throws Exception {
-		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10);
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30);
 		tspGenerateAlgorithm.initDataFromTxtFile("E:\\EclipseJavaWorkSpace\\TSP\\data\\data.txt");
 
 		// Test initDataFromTxtFile() and distance()
@@ -264,5 +284,9 @@ public class TSPGenerateAlgorithm {
 		// System.out.println(tspGenerateAlgorithm.bestEntity);
 		// System.out.println(tspGenerateAlgorithm.shortestDistance);
 		// System.out.println(tspGenerateAlgorithm.childChromosomeList);
+
+		// Test the final situation
+		System.out.println(tspGenerateAlgorithm.shortestPathList);
+		System.out.println(tspGenerateAlgorithm.shortestDistance);
 	}
 }

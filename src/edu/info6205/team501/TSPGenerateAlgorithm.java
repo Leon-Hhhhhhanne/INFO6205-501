@@ -11,7 +11,7 @@ import java.util.Random;
 import javax.annotation.Generated;
 
 /**
- * @author Ang Li
+ * @author Ang Li, Xiaohan Zhao
  *
  */
 public class TSPGenerateAlgorithm {

@@ -8,9 +8,10 @@ import java.util.Random;
  * @author Ang Li, Xiaohan Zhao
  *
  */
-public class TSPChromosome {
+public class TSPChromosome implements Comparable<TSPChromosome> {
 
-	private int[] chromosomeList;
+	private Random random = new Random();
+	public int[] chromosomeList;
 	private int chromosomeLength;
 	private int weight;
 	private int[][] map;
@@ -35,6 +36,14 @@ public class TSPChromosome {
 		// Copy the temp list to the chromosome list
 		for (int i = 0; i < chromosomeLength; i++)
 			chromosomeList[i] = tempList.get(i);
+
+		// Initialize
+		initialize();
+	}
+
+	// Get the weight
+	public int getWeight() {
+		return this.weight;
 	}
 
 	// Set the chromosome list to the given list
@@ -42,6 +51,9 @@ public class TSPChromosome {
 		this.chromosomeLength = givenChromosomeList.length;
 		this.chromosomeList = givenChromosomeList.clone();
 		this.map = givenMap.clone();
+
+		// Initialize
+		initialize();
 	}
 
 	// Initialize the parameters:weight
@@ -53,23 +65,36 @@ public class TSPChromosome {
 	private int calWeight(int[][] map) {
 		int totalWeight = 0;
 		for (int i = 0; i < chromosomeLength - 1; i++)
-			totalWeight += map[i][i + 1];
+			totalWeight += map[chromosomeList[i]][chromosomeList[i + 1]];
 		return totalWeight;
 	}
 
-	// Calculate the fitness count
-	private int calFitness() {
-
-	}
-
 	// Cross over with another chromosome list
-	private int[] crossOver(int[] that) {
+	public TSPChromosome crossOver(TSPChromosome that) {
+		int[] newChromosomeList = new int[chromosomeLength];
+		// Random location from 1 to chromosome length - 1
+		int randomLocation = Math.abs(random.nextInt() % (chromosomeLength - 1)) + 1;
 
+		// The start (from random location to end) gene list are from this
+		for (int i = 0, j = randomLocation; j < chromosomeLength; i++, j++)
+			newChromosomeList[i] = chromosomeList[j];
+
+		// The other gene list are from that and the repeated genes are removed
+		for (int i = chromosomeLength - randomLocation, j = 0; i < chromosomeLength;) {
+			newChromosomeList[i] = that.chromosomeList[j++];
+			int k;
+			for (k = 0; k < chromosomeLength - randomLocation; k++)
+				if (newChromosomeList[k] == newChromosomeList[i])
+					break;
+			if (k == chromosomeLength - randomLocation)
+				i++;
+
+		}
+		return new TSPChromosome(newChromosomeList, this.map);
 	}
 
 	// Mutate itself randomly
-	private void mutation() {
-		Random random = new Random();
+	public void mutation() {
 		int randomLocation1, randomLocataion2, temp, count;
 
 		count = Math.abs(random.nextInt() % chromosomeLength);
@@ -84,6 +109,15 @@ public class TSPChromosome {
 		temp = chromosomeList[randomLocation1];
 		chromosomeList[randomLocation1] = chromosomeList[randomLocataion2];
 		chromosomeList[randomLocataion2] = temp;
+	}
+
+	@Override
+	public int compareTo(TSPChromosome that) {
+		if (weight < that.weight)
+			return -1;
+		if (weight > that.weight)
+			return 1;
+		return 0;
 	}
 
 	// Main method is for testing
@@ -109,11 +143,23 @@ public class TSPChromosome {
 
 		/* Test the weight */
 		tspChromosome.initialize();
-		// System.out.println(tspChromosome.weight);
+		// System.out.println(tspChromosome.calWeight(tspChromosome.map));
 
 		/* Test the mutation function */
 		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
 		tspChromosome.mutation();
 		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+
+		/* Test the crossover function */
+		// TSPChromosome newtspChromosome = new
+		// TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
+		// tspGenerateAlgorithm.distanceMap);
+		// System.out.println("Father: " +
+		// Arrays.toString(tspChromosome.chromosomeList));
+		// System.out.println("Mother: " +
+		// Arrays.toString(newtspChromosome.chromosomeList));
+		// System.out.println("Child: " +
+		// Arrays.toString(tspChromosome.crossOver(newtspChromosome).chromosomeList));
 	}
+
 }

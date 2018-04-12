@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Generated;
@@ -16,30 +18,32 @@ import javax.annotation.Generated;
  */
 public class TSPGenerateAlgorithm {
 
-	private final static double P_DEFAULT_CROSS = 0.1;
-	private final static double P_DEFALUT_MUTATION = 0;
+	private final static double P_DEFAULT_CROSS = 0.95;
+	private final static double P_DEFALUT_MUTATION = 0.0;
+	private final static int GENERATION_NUM = 100;
 
 	public int cityNum;
-	
+	public int[][] distanceMap;
+
 	private ArrayList<Integer> xAxisList;
 	private ArrayList<Integer> yAxisList;
 
 	private TSPChromosome[] parentChromosomeList;
 	private TSPChromosome[] childChromosomeList;
-
-	public int[][] distanceMap;
-	private double[] rouletteWheelList;
 	private Random random;
 
+	private int[] distanceList;
+	private double[] fitnessList;
+	private int populationNum;
+
 	public TSPGenerateAlgorithm(int populationNum) {
-		this.cityNum = populationNum;
+		this.populationNum = populationNum;
 	}
 
 	@SuppressWarnings("unchecked")
 	public void initDataFromTxtFile(String filename) throws Exception {
 		xAxisList = new ArrayList<>();
 		yAxisList = new ArrayList<>();
-		new ArrayList<>();
 		random = new Random();
 
 		// Read data from file line by line, the format is 1 6734 1453
@@ -51,10 +55,14 @@ public class TSPGenerateAlgorithm {
 			yAxisList.add(Integer.valueOf(strElement[2]));
 		}
 		bufferedReader.close();
+
+		// Initialize the parameters
 		cityNum = xAxisList.size();
 		distanceMap = new int[cityNum][cityNum];
-		parentChromosomeList = new TSPChromosome[cityNum];
-		childChromosomeList = new TSPChromosome[cityNum];
+		parentChromosomeList = new TSPChromosome[populationNum];
+		childChromosomeList = new TSPChromosome[populationNum];
+		distanceList = new int[populationNum];
+		fitnessList = new double[populationNum];
 
 		// initialize the distance between every two nodes
 		for (int i = 0; i < cityNum; i++) {
@@ -62,12 +70,18 @@ public class TSPGenerateAlgorithm {
 				distanceMap[i][j] = distance(i, j);
 		}
 
-		// initialize the chromosome of the first generation and the fitness list
+		// initialize the first generation of paranet chromosome list
 		TSPChromosome tspChromosome;
-		for (int i = 0; i < cityNum; i++) {
+		for (int i = 0; i < populationNum; i++) {
 			tspChromosome = new TSPChromosome(cityNum, new Random(), distanceMap);
 			parentChromosomeList[i] = tspChromosome;
 		}
+
+		// Calculate distance of the each individual
+		calDistanceList();
+
+		// Calculate the fitness list
+		calFitnessList();
 	}
 
 	// Pseudo-Euclidean distance
@@ -86,78 +100,86 @@ public class TSPGenerateAlgorithm {
 		return dij;
 	}
 
-	// choose the best entity and put the best entity to children chromosome list
-	// private void bestEntity() {
-	// rouletteWheelList = new double[cityNum];
-	// int shortestPath = fitnessList.get(0);
-	// int shortestPosition = 0;
-	// for (int i = 1; i < cityNum; i++)
-	// if (fitnessList.get(i) < shortestPath) {
-	// shortestPath = fitnessList.get(i);
-	// shortestPosition = i;
-	// }
-	// bestEntity = shortestPosition;
-	// childChromosomeList.set(0, parentChromosomeList.get(shortestPosition));
-	//
-	// // set the roulette
-	// double sum = 0;
-	// for (int i = 0; i < cityNum; i++) {
-	// sum += (double) 10 / fitnessList.get(i);
-	// }
-	// for (int i = 0; i < cityNum; i++) {
-	// rouletteWheelList[i] = (double) 10 / fitnessList.get(i) / sum;
-	// }
-	// for (int i = 1; i < cityNum; i++) {
-	// rouletteWheelList[i] += rouletteWheelList[i - 1];
-	// }
-	// }
+	// Calculate the distance list using the current generation
+	private void calDistanceList() {
+		for (int i = 0; i < populationNum; i++) {
+			distanceList[i] = parentChromosomeList[i].getWeight();
+		}
+	}
+
+	// Calculate the fitness list using the current generation
+	private void calFitnessList() {
+		double sumFitness = 0;
+		for (int i = 0; i < populationNum; i++) {
+			fitnessList[i] = (double) 1 / distanceList[i];
+			sumFitness += fitnessList[i];
+		}
+		fitnessList[0] = fitnessList[0] / sumFitness;
+		for (int i = 1; i < populationNum; i++)
+			fitnessList[i] = fitnessList[i - 1] + fitnessList[i] / sumFitness;
+	}
 
 	// select and generate the remaining descendents
 	private void select() {
-		for (int i = 1; i < cityNum; i++)
-			childChromosomeList.set(i, parentChromosomeList.get(wheelOut(random.nextDouble())));
-	}
+		Arrays.sort(parentChromosomeList);
+		int flag;
+		for (int k = 0; k < populationNum; k++) {
+			// Copy the best ten percentage of entities from parents to children
+			flag = random.nextInt(populationNum / 10);
+			childChromosomeList[k] = parentChromosomeList[flag];
+			// for (int i = 0; i < populationNum / 10; i++)
+			// childChromosomeList[k] = parentChromosomeList[i];
 
-	private int wheelOut(double ran) {
-		for (int i = 0; i < cityNum; i++) {
-			if (ran <= rouletteWheelList[i]) {
-				return i;
-			}
+			// Generate other entities
+			// int j = 0;
+			// for (int i = populationNum / 10; i < populationNum; i++)
+			// childChromosomeList[i] = parentChromosomeList[j++];
+			// childChromosomeList[i] = parentChromosomeList[wheelOut(random.nextDouble())];
 		}
-		return 0;
 	}
 
-	// mutation and crossover
+	// Wheel out algorithm
+	// private int wheelOut(double ran) {
+	// for (int i = 0; i < populationNum; i++)
+	// if (ran <= fitnessList[i])
+	// return i;
+	// return 0;
+	// }
+
+	// Mutation and crossover
 	private void evolution() {
-		for (int i = 0; i < cityNum; i += 2) {
+		for (int i = 1; i < populationNum; i++) {
 			double ranDouble = random.nextDouble();
 			if (ranDouble < P_DEFAULT_CROSS)
-				crossOver(i, i + 1);
+				childChromosomeList[i] = childChromosomeList[i].crossOver(childChromosomeList[i - 1]);
 			else {
 				ranDouble = random.nextDouble();
 				if (ranDouble < P_DEFALUT_MUTATION)
-					mutation(i);
-				ranDouble = random.nextDouble();
-				if (ranDouble < P_DEFALUT_MUTATION) {
-					mutation(i + 1);
-				}
+					childChromosomeList[i].mutation();
 			}
 		}
 	}
 
-	// private void generate() {
-	// bestEntity();
-	// select();
-	// // System.out.println(childChromosomeList);
-	// for (int i = 0; i < 1000; i++) {
-	// evolution();
-	// parentChromosomeList.get(bestEntity);
-	// parentChromosomeList = (ArrayList<ArrayList<Integer>>)
-	// childChromosomeList.clone();
-	// // System.out.println(shortestDistance);
-	// }
-	// // System.out.println(childChromosomeList);
-	// }
+	// Calculate the best entity of the current generation
+	private int bestEntity() {
+		int shortestDistance = distanceList[0];
+		for (int i = 1; i < populationNum; i++)
+			if (distanceList[i] < shortestDistance)
+				shortestDistance = distanceList[i];
+		return shortestDistance;
+	}
+
+	// Generation
+	public void generate() {
+		for (int i = 0; i < GENERATION_NUM; i++) {
+			select();
+			evolution();
+			parentChromosomeList = childChromosomeList.clone();
+			calDistanceList();
+			calFitnessList();
+			System.out.println("Generation: " + i + " is " + bestEntity());
+		}
+	}
 
 	public static void main(String[] args) throws Exception {
 		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30);
@@ -182,7 +204,7 @@ public class TSPGenerateAlgorithm {
 		// Test the fitness list
 		// System.out.println(tspGenerateAlgorithm.fitnessList);
 
-		tspGenerateAlgorithm.generate();
+		// tspGenerateAlgorithm.generate();
 		// System.out.println(tspGenerateAlgorithm.bestEntity);
 		// System.out.println(tspGenerateAlgorithm.shortestDistance);
 		// System.out.println(tspGenerateAlgorithm.childChromosomeList);
@@ -191,7 +213,27 @@ public class TSPGenerateAlgorithm {
 		// System.out.println(tspGenerateAlgorithm.shortestPathList);
 		// System.out.println(tspGenerateAlgorithm.shortestDistance);
 
-		// Test the map
-		System.out.println(Arrays.toString(tspGenerateAlgorithm.distanceMap[1]));
+		/* Test the map */
+		// System.out.println(Arrays.toString(tspGenerateAlgorithm.distanceMap[1]));
+
+		/* Test the select function */
+		// tspGenerateAlgorithm.select();
+		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
+		// System.out
+		// .println("Parent: " +
+		// Arrays.toString(tspGenerateAlgorithm.parentChromosomeList[i].chromosomeList));
+		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
+		// System.out.println("Child: " +
+		// Arrays.toString(tspGenerateAlgorithm.childChromosomeList[i].chromosomeList));
+
+		/* Test the evolution function */
+		// tspGenerateAlgorithm.evolution();
+		// System.out.println("------- After evolution -------");
+		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
+		// System.out.println("Child: " +
+		// Arrays.toString(tspGenerateAlgorithm.childChromosomeList[i].chromosomeList));
+
+		/* Test the generate function */
+		tspGenerateAlgorithm.generate();
 	}
 }

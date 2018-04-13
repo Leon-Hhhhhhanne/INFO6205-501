@@ -36,12 +36,25 @@ public class TSPGenerateAlgorithm {
 	private double[] fitnessList;
 	private int populationNum;
 
-	public TSPGenerateAlgorithm(int populationNum) {
+	public TSPGenerateAlgorithm(int populationNum,String filename) throws Exception{
 		this.populationNum = populationNum;
+		initDataFromTxtFile(filename);
 	}
 
-	@SuppressWarnings("unchecked")
-	public void initDataFromTxtFile(String filename) throws Exception {
+    public double[] getFitnessList() {
+        return fitnessList;
+    }
+
+    public TSPChromosome[] getChildChromosomeList() {
+        return childChromosomeList;
+    }
+
+    public int[] getDistanceList() {
+        return distanceList;
+    }
+
+    @SuppressWarnings("unchecked")
+	private void initDataFromTxtFile(String filename) throws Exception {
 		xAxisList = new ArrayList<>();
 		yAxisList = new ArrayList<>();
 		random = new Random();
@@ -51,8 +64,8 @@ public class TSPGenerateAlgorithm {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
 		while ((line = bufferedReader.readLine()) != null) {
 			String[] strElement = line.split(" ");
-			xAxisList.add(Integer.valueOf(strElement[1]));
-			yAxisList.add(Integer.valueOf(strElement[2]));
+			xAxisList.add(Integer.valueOf(strElement[0]));
+			yAxisList.add(Integer.valueOf(strElement[1]));
 		}
 		bufferedReader.close();
 
@@ -85,7 +98,7 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// Pseudo-Euclidean distance
-	private int distance(int from, int to) {
+	public int distance(int from, int to) {
 		if (from == to)
 			return 0;
 		int dij;
@@ -101,14 +114,14 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// Calculate the distance list using the current generation
-	private void calDistanceList() {
+	public void calDistanceList() {
 		for (int i = 0; i < populationNum; i++) {
 			distanceList[i] = parentChromosomeList[i].getWeight();
 		}
 	}
 
 	// Calculate the fitness list using the current generation
-	private void calFitnessList() {
+	public void calFitnessList() {
 		double sumFitness = 0;
 		for (int i = 0; i < populationNum; i++) {
 			fitnessList[i] = (double) 1 / distanceList[i];
@@ -120,7 +133,7 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// select and generate the remaining descendents
-	private void select() {
+	public void select() {
 		Arrays.sort(parentChromosomeList);
 		int flag;
 		for (int k = 0; k < populationNum; k++) {
@@ -147,7 +160,7 @@ public class TSPGenerateAlgorithm {
 	// }
 
 	// Mutation and crossover
-	private void evolution() {
+	public void evolution() {
 		for (int i = 1; i < populationNum; i++) {
 			double ranDouble = random.nextDouble();
 			if (ranDouble < P_DEFAULT_CROSS)
@@ -161,7 +174,7 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// Calculate the best entity of the current generation
-	private int bestEntity() {
+	public int bestEntity() {
 		int shortestDistance = distanceList[0];
 		for (int i = 1; i < populationNum; i++)
 			if (distanceList[i] < shortestDistance)
@@ -182,8 +195,7 @@ public class TSPGenerateAlgorithm {
 	}
 
 	public static void main(String[] args) throws Exception {
-		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30);
-		tspGenerateAlgorithm.initDataFromTxtFile("E:\\EclipseJavaWorkSpace\\TSP\\data\\data.txt");
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30,"data.txt");
 
 		// Test initDataFromTxtFile() and distance()
 		// System.out.println(tspGenerateAlgorithm.distanceList);

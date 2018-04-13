@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc96f189-66bf-4812-834f-60552bd35a7b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/info6205/team501/ChromosomeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TSPGenerateAlgorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TSPGenerateAlgorithm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,58 +22,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TSPGenerateAlgorithm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TSPGenerateAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1435">
-              <caret line="253" column="83" selection-start-line="253" selection-start-column="83" selection-end-line="253" selection-end-column="83" />
+            <state relative-caret-position="163">
+              <caret line="184" column="17" selection-start-line="184" selection-start-column="7" selection-end-line="184" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1003#1004#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1048#1078#0" expanded="true" />
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1085#1086#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+                <element signature="e#1182#1183#0" expanded="true" />
+                <element signature="e#1220#1221#0" expanded="true" />
+                <element signature="e#1255#1256#0" expanded="true" />
+                <element signature="e#1015#1045#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenerateAlgorithmImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
+      <file leaf-file-name="GenerateAlgorithmTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateAlgorithm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Chromosome.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+            <state relative-caret-position="342">
+              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>distanceMap;</find>
+      <find>distanceMap</find>
+      <find>distanceMap</find>
+      <find>bestE</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/ChromosomeTest.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java" />
       </list>
     </option>
   </component>
@@ -77,10 +96,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="109" />
-    <option name="y" value="145" />
+    <option name="x" value="112" />
+    <option name="y" value="128" />
     <option name="width" value="1379" />
-    <option name="height" value="755" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -148,7 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -172,6 +190,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -180,7 +199,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -194,9 +213,141 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.GenerateAlgorithmTest.testGeneration">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="All in TSPGenerateAlgorithm" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GenerateAlgorithmTest.testCallDistanceList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
+      <option name="METHOD_NAME" value="testCallDistanceList" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GenerateAlgorithmTest.testEntity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
+      <option name="METHOD_NAME" value="testEntity" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GenerateAlgorithmTest.testEvolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
+      <option name="METHOD_NAME" value="testEvolution" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GenerateAlgorithmTest.testGeneration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
+      <option name="METHOD_NAME" value="testGeneration" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GenerateAlgorithmTest.testSelect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TSPGenerateAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
+      <option name="METHOD_NAME" value="testSelect" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -236,6 +387,23 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="JUnit.All in TSPGenerateAlgorithm" />
+      <item itemvalue="JUnit.GenerateAlgorithmTest.testCallDistanceList" />
+      <item itemvalue="JUnit.GenerateAlgorithmTest.testSelect" />
+      <item itemvalue="JUnit.GenerateAlgorithmTest.testEvolution" />
+      <item itemvalue="JUnit.GenerateAlgorithmTest.testEntity" />
+      <item itemvalue="JUnit.GenerateAlgorithmTest.testGeneration" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GenerateAlgorithmTest.testGeneration" />
+        <item itemvalue="JUnit.GenerateAlgorithmTest.testEntity" />
+        <item itemvalue="JUnit.GenerateAlgorithmTest.testEvolution" />
+        <item itemvalue="JUnit.GenerateAlgorithmTest.testSelect" />
+        <item itemvalue="JUnit.GenerateAlgorithmTest.testCallDistanceList" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -250,32 +418,70 @@
       <workItem from="1523242726419" duration="1170000" />
       <workItem from="1523325714809" duration="195000" />
       <workItem from="1523327395708" duration="15000" />
-      <workItem from="1523334523654" duration="237000" />
+      <workItem from="1523334523654" duration="319000" />
+      <workItem from="1523409059705" duration="759000" />
+      <workItem from="1523411082574" duration="522000" />
+      <workItem from="1523477862630" duration="321000" />
+      <workItem from="1523560430477" duration="15308000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 30m 40s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 31m 04s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 31m 39s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 31m 55s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 32m 13s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEvolution - 2018.04.12 at 21h 32m 20s.xml">
+      <configuration name="GenerateAlgorithmTest.testEvolution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEntity - 2018.04.12 at 21h 43m 14s.xml">
+      <configuration name="GenerateAlgorithmTest.testEntity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEntity - 2018.04.12 at 21h 43m 47s.xml">
+      <configuration name="GenerateAlgorithmTest.testEntity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEntity - 2018.04.12 at 21h 43m 55s.xml">
+      <configuration name="GenerateAlgorithmTest.testEntity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GenerateAlgorithmTest_testEntity - 2018.04.12 at 21h 44m 06s.xml">
+      <configuration name="GenerateAlgorithmTest.testEntity" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1617000" />
+    <option name="totallyTimeSpent" value="18609000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="109" y="145" width="1379" height="755" extended-state="0" />
+    <frame x="112" y="128" width="1379" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.32859176" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.314367" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32859176" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2183994" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2303665" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32859176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -287,7 +493,6 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,16 +501,18 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="70" selection-start-line="47" selection-start-column="70" selection-end-line="47" selection-end-column="70" />
+        <state relative-caret-position="1620">
+          <caret line="117" column="24" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1048#1078#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -313,7 +520,7 @@
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -324,15 +531,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="74" column="62" lean-forward="true" selection-start-line="74" selection-start-column="62" selection-end-line="74" selection-end-column="62" />
+          <folding>
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+        <state relative-caret-position="1620">
+          <caret line="117" column="24" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1048#1078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3840">
+          <caret line="256" column="51" lean-forward="true" selection-start-line="256" selection-start-column="51" selection-end-line="256" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -360,13 +658,110 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1435">
-          <caret line="253" column="83" selection-start-line="253" selection-start-column="83" selection-end-line="253" selection-end-column="83" />
+        <state relative-caret-position="705">
+          <caret line="47" column="70" selection-start-line="47" selection-start-column="70" selection-end-line="47" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1048#1078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/ChromosomeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TSPGenerateAlgorithm.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1307">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="26" />
+          <folding>
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="184" column="17" selection-start-line="184" selection-start-column="7" selection-end-line="184" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1015#1045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

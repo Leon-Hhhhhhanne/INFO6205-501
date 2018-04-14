@@ -1,5 +1,6 @@
-package edu.info6205.team501;
+package edu.info6205.team501.Test;
 
+import edu.info6205.team501.SourceCode.TSPGenerateAlgorithm;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,8 +21,8 @@ public class GenerateAlgorithmTest {
     //test distance
     @Test
     public void testDistance(){
-        int result = tspGenerateAlgorithm.distance(0,4);
-        assertEquals(2,result);
+        int result = (int) Math.round(tspGenerateAlgorithm.distance(0,4));
+        assertEquals(566,result);
     }
 
     //test call fitness
@@ -49,8 +50,8 @@ public class GenerateAlgorithmTest {
     //test best entity
     @Test
     public void testEntity(){
-        int result = tspGenerateAlgorithm.bestEntity();
-        for (int re : tspGenerateAlgorithm.getDistanceList()){
+        double result = tspGenerateAlgorithm.bestEntity();
+        for (double re : tspGenerateAlgorithm.getDistanceList()){
             if (re == result) {
                 assert (true);
                 return;

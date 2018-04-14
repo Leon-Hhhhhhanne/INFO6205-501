@@ -5,7 +5,7 @@
  */
 package edu.info6205.team501.UserInterface;
 
-import edu.info6205.team501.TSPGenerateAlgorithm;
+import edu.info6205.team501.SourceCode.TSPGenerateAlgorithm;
 
 import java.awt.*;
 import java.util.ArrayList;

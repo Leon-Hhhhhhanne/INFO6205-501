@@ -1,4 +1,4 @@
-package edu.info6205.team501;
+package edu.info6205.team501.SourceCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +14,11 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	private int[] phenotypeList;
 	private String[] genotypeList;
 	private int chromosomeLength;
-	private int weight;
-	private int[][] map;
+	private double weight;
+	private double[][] map;
 
 	// Generate a random chromosome list randomly
-	public TSPChromosome(int chromosomeLength, Random random, int[][] givenMap) {
+	public TSPChromosome(int chromosomeLength, Random random, double[][] givenMap) {
 		this.chromosomeLength = chromosomeLength;
 		this.phenotypeList = new int[chromosomeLength];
 		this.genotypeList = new String[chromosomeLength];
@@ -46,7 +46,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	}
 
 	// Set the chromosome list to the given list
-	public TSPChromosome(int[] givenChromosomeList, int[][] givenMap) {
+	public TSPChromosome(int[] givenChromosomeList, double[][] givenMap) {
 		this.chromosomeLength = givenChromosomeList.length;
 		this.phenotypeList = givenChromosomeList.clone();
 		this.genotypeList = new String[chromosomeLength];
@@ -70,7 +70,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 		return genotypeList;
 	}
 
-	public int[][] getMap() {
+	public double[][] getMap() {
 		return map;
 	}
 
@@ -123,7 +123,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	}
 
 	// Get the weight
-	public int getWeight() {
+	public double getWeight() {
 		return this.weight;
 	}
 
@@ -133,8 +133,8 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	}
 
 	// Calculate the whole weight of this chromosome list
-	public int calWeight() {
-		int totalWeight = 0;
+	public double calWeight() {
+		double totalWeight = 0;
 		for (int i = 0; i < chromosomeLength - 1; i++)
 			totalWeight += map[phenotypeList[i]][phenotypeList[i + 1]];
 		totalWeight += map[phenotypeList[chromosomeLength - 1]][0];
@@ -200,56 +200,15 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 
 	@Override
 	public int compareTo(TSPChromosome that) {
-		if (weight < that.weight)
-			return -1;
-		if (weight > that.weight)
-			return 1;
-		return 0;
+		return Double.compare(weight, that.weight);
 	}
 
 	// Main method is for testing
 	public static void main(String[] args) throws Exception {
 
-		/* Test the constructor using Random object */
 		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10, "data.txt");
-		// tspGenerateAlgorithm.initDataFromTxtFile("data.txt");
 		TSPChromosome tspChromosome = new TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
 				tspGenerateAlgorithm.distanceMap);
-		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-		// System.out.println(tspChromosome.chromosomeLength);
-		// TODO:Continue test if there are any repeated values in the list
-
-		/* Test the constructor using given list */
-		// int[] testlist = { 1, 2, 3, 4, 5 };
-		// tspChromosome = new TSPChromosome(testlist,tspGenerateAlgorithm.distanceMap);
-		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-		// System.out.println(tspChromosome.chromosomeLength);
-
-		/* Test the map obtained from the TSPGenerateAlgorithm */
-		// System.out.println(Arrays.toString(tspChromosome.map[4]));
-
-		/* Test the weight */
-		// tspChromosome.initialize();
-		// System.out.println(tspChromosome.calWeight(tspChromosome.map));
-
-		/* Test the mutation function */
-		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-		// tspChromosome.mutation();
-		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-
-		/* Test the crossover function */
-		// TSPChromosome newtspChromosome = new
-		// TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
-		// tspGenerateAlgorithm.distanceMap);
-		// System.out.println("Father: " +
-		// Arrays.toString(tspChromosome.chromosomeList));
-		// System.out.println("Mother: " +
-		// Arrays.toString(newtspChromosome.chromosomeList));
-		// System.out.println("Child: " +
-		// Arrays.toString(tspChromosome.crossOver(newtspChromosome).chromosomeList));
-
-		/* Test the phenotype to genotype function */
-		// System.out.println(tspChromosome.phenotypeToGenotype(25));
 	}
 
 }

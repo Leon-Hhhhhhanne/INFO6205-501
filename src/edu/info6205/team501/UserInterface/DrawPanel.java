@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TspUserInterface;
+package edu.info6205.team501.UserInterface;
 
-import TspSourceCode.TSPGenerateAlgorithm;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
+import edu.info6205.team501.TSPGenerateAlgorithm;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

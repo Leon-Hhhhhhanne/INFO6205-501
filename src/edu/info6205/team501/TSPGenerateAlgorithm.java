@@ -54,6 +54,22 @@ public class TSPGenerateAlgorithm {
 		return distanceList;
 	}
 
+	public String[] getBestGenotypeList() {
+		return bestGenotypeList;
+	}
+
+	public ArrayList<Integer> getxAxisList() {
+		return xAxisList;
+	}
+
+	public ArrayList<Integer> getyAxisList() {
+		return yAxisList;
+	}
+
+	public int[] getBestPhenotypeList() {
+		return bestPhenotypeList;
+	}
+
 	@SuppressWarnings("unchecked")
 	private void initDataFromTxtFile(String filename) throws Exception {
 		xAxisList = new ArrayList<>();

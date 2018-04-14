@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc96f189-66bf-4812-834f-60552bd35a7b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/test1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/DrawPanel.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/DrawPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/MainJFrame.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/MainJFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,16 +19,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TSPGenerateAlgorithm.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TSPGenerateAlgorithm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1936">
-              <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+            <state relative-caret-position="277">
+              <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+              <folding>
+                <element signature="e#1355#1356#0" expanded="true" />
+                <element signature="e#1385#1386#0" expanded="true" />
+                <element signature="e#1358#1359#0" expanded="true" />
+                <element signature="e#1381#1382#0" expanded="true" />
+                <element signature="e#1426#1427#0" expanded="true" />
+                <element signature="e#1449#1450#0" expanded="true" />
+                <element signature="e#1489#1490#0" expanded="true" />
+                <element signature="e#1520#1521#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test1.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainJFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/MainJFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="157" column="25" selection-start-line="157" selection-start-column="25" selection-end-line="157" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#6946#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#890#979#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#7512#7599#0" expanded="true" />
+                <element signature="e#8993#8994#0" expanded="true" />
+                <element signature="e#9058#9059#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/DrawPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="106" column="65" lean-forward="true" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
+              <folding>
+                <element signature="e#0#3704#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test1.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test1.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -38,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/test.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -47,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="634">
-              <caret line="224" lean-forward="true" selection-start-line="224" selection-end-line="224" />
+              <caret line="248" selection-start-line="248" selection-end-line="248" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,8 +144,13 @@
         <option value="$PROJECT_DIR$/src/edu/info6205/team501/ChromosomeTest.java" />
         <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java" />
         <option value="$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java" />
-        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" />
         <option value="$PROJECT_DIR$/test1.txt" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/MainJFrame.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TspUserInterface/DrawPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/DrawPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/DrawPanel.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/MainJFrame.java" />
+        <option value="$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java" />
       </list>
     </option>
   </component>
@@ -201,6 +251,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="team501" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TSPGenerateAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TSPGenerateAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="team501" type="462c0819:PsiDirectoryNode" />
+              <item name="UserInterface" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -228,14 +285,36 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TSPGenerateAlgorithm">
+  <component name="RunManager" selected="Application.MainJFrame (1)">
+    <configuration name="MainJFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TspUserInterface.MainJFrame" />
+      <module name="TSPGenerateAlgorithm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TspUserInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="MainJFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.UserInterface.MainJFrame" />
+      <module name="TSPGenerateAlgorithm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.info6205.team501.UserInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="TSPGenerateAlgorithm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.TSPGenerateAlgorithm" />
       <module name="TSPGenerateAlgorithm" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="PATTERN" value="edu.info6205.team501.UserInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -264,7 +343,7 @@
       <module name="TSPGenerateAlgorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="PATTERN" value="edu.info6205.team501.UserInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -283,34 +362,11 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="GenerateAlgorithmTest.testEvolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TSPGenerateAlgorithm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.info6205.team501.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
-      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
-      <option name="METHOD_NAME" value="testEvolution" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration name="GenerateAlgorithmTest.testGeneration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TSPGenerateAlgorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.info6205.team501.*" />
+          <option name="PATTERN" value="edu.info6205.team501.UserInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -319,29 +375,6 @@
       <option name="PACKAGE_NAME" value="edu.info6205.team501" />
       <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
       <option name="METHOD_NAME" value="testGeneration" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="GenerateAlgorithmTest.testSelect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TSPGenerateAlgorithm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.info6205.team501.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="edu.info6205.team501" />
-      <option name="MAIN_CLASS_NAME" value="edu.info6205.team501.GenerateAlgorithmTest" />
-      <option name="METHOD_NAME" value="testSelect" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -392,19 +425,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.All in TSPGenerateAlgorithm" />
-      <item itemvalue="JUnit.GenerateAlgorithmTest.testSelect" />
-      <item itemvalue="JUnit.GenerateAlgorithmTest.testEvolution" />
       <item itemvalue="JUnit.GenerateAlgorithmTest.testEntity" />
       <item itemvalue="JUnit.GenerateAlgorithmTest.testGeneration" />
       <item itemvalue="Application.TSPGenerateAlgorithm" />
+      <item itemvalue="Application.MainJFrame" />
+      <item itemvalue="Application.MainJFrame (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainJFrame (1)" />
+        <item itemvalue="Application.MainJFrame" />
         <item itemvalue="Application.TSPGenerateAlgorithm" />
         <item itemvalue="JUnit.GenerateAlgorithmTest.testGeneration" />
         <item itemvalue="JUnit.GenerateAlgorithmTest.testEntity" />
-        <item itemvalue="JUnit.GenerateAlgorithmTest.testEvolution" />
-        <item itemvalue="JUnit.GenerateAlgorithmTest.testSelect" />
       </list>
     </recent_temporary>
   </component>
@@ -426,7 +459,7 @@
       <workItem from="1523411082574" duration="522000" />
       <workItem from="1523477862630" duration="321000" />
       <workItem from="1523560430477" duration="15308000" />
-      <workItem from="1523674011581" duration="3521000" />
+      <workItem from="1523674011581" duration="4745000" />
     </task>
     <servers />
   </component>
@@ -463,7 +496,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22130000" />
+    <option name="totallyTimeSpent" value="23354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="112" y="128" width="1379" height="800" extended-state="0" />
@@ -515,6 +548,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
           <caret line="191" column="17" selection-start-line="191" selection-start-column="17" selection-end-line="191" selection-end-column="17" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -532,6 +575,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1620">
           <caret line="117" column="24" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -552,6 +605,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1620">
           <caret line="117" column="24" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -569,6 +632,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -586,6 +659,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
           <caret line="256" column="51" lean-forward="true" selection-start-line="256" selection-start-column="51" selection-end-line="256" selection-end-column="51" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -596,6 +679,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="47" column="70" selection-start-line="47" selection-start-column="70" selection-end-line="47" selection-end-column="70" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -605,6 +698,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -628,6 +731,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="248" selection-start-line="248" selection-end-line="248" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/DrawPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="106" column="65" lean-forward="true" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#3704#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/UserInterface/MainJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="157" column="25" selection-start-line="157" selection-start-column="25" selection-end-line="157" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#6946#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#890#979#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#7512#7599#0" expanded="true" />
+            <element signature="e#8993#8994#0" expanded="true" />
+            <element signature="e#9058#9059#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/GenerateAlgorithmTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
@@ -638,34 +793,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPChromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="224" lean-forward="true" selection-start-line="224" selection-end-line="224" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/info6205/team501/TSPGenerateAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1936">
-          <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="277">
+          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1426#1427#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

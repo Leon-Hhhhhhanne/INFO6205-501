@@ -40,7 +40,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 			phenotypeList[i] = tempList.get(i);
 			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
 		}
-			
+
 		// Initialize
 		initialize();
 	}
@@ -51,7 +51,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 		this.phenotypeList = givenChromosomeList.clone();
 		this.genotypeList = new String[chromosomeLength];
 		this.map = givenMap.clone();
-		for (int i = 0; i < chromosomeLength; i++) 
+		for (int i = 0; i < chromosomeLength; i++)
 			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
 
 		// Initialize
@@ -65,7 +65,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	public int[] getPhenotypeList() {
 		return phenotypeList;
 	}
-	
+
 	public String[] getGenoTypeList() {
 		return genotypeList;
 	}
@@ -100,6 +100,28 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 		}
 	}
 
+	// Genotype List to Phenotype List
+	private int genotypeToPhenotype(String phenotype) {
+		char[] phenotypeCharList = phenotype.toCharArray();
+		return toPheno(phenotypeCharList[0]) * 64 + toPheno(phenotypeCharList[1]) * 16
+				+ toPheno(phenotypeCharList[2]) * 4 + toPheno(phenotypeCharList[3]);
+	}
+
+	private int toPheno(char gene) {
+		switch (gene) {
+		case 'A':
+			return 0;
+		case 'G':
+			return 1;
+		case 'C':
+			return 2;
+		case 'T':
+			return 3;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
 	// Get the weight
 	public int getWeight() {
 		return this.weight;
@@ -120,33 +142,35 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 
 	// Cross over with another chromosome list
 	public TSPChromosome crossOver(TSPChromosome that) {
-		int[] newChromosomeList = new int[chromosomeLength];
+		int[] newPhenotypeList = new int[chromosomeLength];
+		String[] newGenotypeList = new String[chromosomeLength];
 		// Random location from 1 to chromosome length - 1
 		int randomLocation = Math.abs(random.nextInt() % (chromosomeLength - 1)) + 1;
 
 		// The start (from random location to end) gene list are from this
 		for (int i = 0, j = randomLocation; j < chromosomeLength; i++, j++)
-			newChromosomeList[i] = phenotypeList[j];
+			newGenotypeList[i] = genotypeList[j];
 
 		// The other gene list are from that and the repeated genes are removed
 		for (int i = chromosomeLength - randomLocation, j = 0; i < chromosomeLength;) {
-			newChromosomeList[i] = that.phenotypeList[j++];
+			newGenotypeList[i] = that.genotypeList[j++];
 			int k;
 			for (k = 0; k < chromosomeLength - randomLocation; k++)
-				if (newChromosomeList[k] == newChromosomeList[i])
+				if (newGenotypeList[k].equals(newGenotypeList[i]))
 					break;
 			if (k == chromosomeLength - randomLocation)
 				i++;
-
 		}
-		return new TSPChromosome(newChromosomeList, this.map);
+
+		for (int i = 0; i < chromosomeLength; i++)
+			newPhenotypeList[i] = genotypeToPhenotype(newGenotypeList[i]);
+		return new TSPChromosome(newPhenotypeList, this.map);
 	}
 
 	// Mutate itself randomly
 	public void mutation() {
-		int randomLocation1, randomLocataion2, temp, count;
-
-		count = Math.abs(random.nextInt() % chromosomeLength);
+		int randomLocation1, randomLocataion2;
+		String temp;
 
 		// Generate two different gene
 		randomLocation1 = Math.abs(random.nextInt() % chromosomeLength);
@@ -155,11 +179,11 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 			randomLocataion2 = Math.abs(random.nextInt() % chromosomeLength);
 
 		// Exchange the gene located in the random locations
-		temp = phenotypeList[randomLocation1];
-		phenotypeList[randomLocation1] = phenotypeList[randomLocataion2];
-		phenotypeList[randomLocataion2] = temp;
-		for (int i = 0; i < chromosomeLength; i++) 
-			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
+		temp = genotypeList[randomLocation1];
+		genotypeList[randomLocation1] = genotypeList[randomLocataion2];
+		genotypeList[randomLocataion2] = temp;
+		for (int i = 0; i < chromosomeLength; i++)
+			phenotypeList[i] = genotypeToPhenotype(genotypeList[i]);
 	}
 
 	public boolean isValidateChromosome() {

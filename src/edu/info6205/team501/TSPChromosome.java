@@ -137,6 +137,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 		int totalWeight = 0;
 		for (int i = 0; i < chromosomeLength - 1; i++)
 			totalWeight += map[phenotypeList[i]][phenotypeList[i + 1]];
+		totalWeight += map[phenotypeList[chromosomeLength - 1]][0];
 		return totalWeight;
 	}
 

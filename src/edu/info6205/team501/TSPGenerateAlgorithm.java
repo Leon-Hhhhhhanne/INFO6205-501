@@ -4,6 +4,7 @@ package edu.info6205.team501;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -17,9 +18,10 @@ import org.junit.experimental.theories.Theories;
  */
 public class TSPGenerateAlgorithm {
 
-	private final static double P_DEFAULT_CROSS = 0.95;
-	private final static double P_DEFALUT_MUTATION = 0.0;
+	private final static double P_DEFAULT_CROSS = 1;
+	private final static double P_DEFALUT_MUTATION = 0;
 	private final static int GENERATION_NUM = 100;
+	private final static int DEFAULT_POPULATION_NUM = 30000;
 
 	public int cityNum;
 	public int[][] distanceMap;
@@ -36,6 +38,11 @@ public class TSPGenerateAlgorithm {
 	private int populationNum;
 	private int[] bestPhenotypeList;
 	private String[] bestGenotypeList;
+
+	public TSPGenerateAlgorithm(String filename) throws Exception {
+		this.populationNum = DEFAULT_POPULATION_NUM;
+		initDataFromTxtFile(filename);
+	}
 
 	public TSPGenerateAlgorithm(int populationNum, String filename) throws Exception {
 		this.populationNum = populationNum;
@@ -153,7 +160,8 @@ public class TSPGenerateAlgorithm {
 	public void select() {
 		Arrays.sort(parentChromosomeList);
 		int flag;
-		for (int k = 0; k < populationNum; k++) {
+		childChromosomeList[0]=parentChromosomeList[0];
+		for (int k = 1; k < populationNum; k++) {
 			// Copy the best ten percentage of entities from parents to children
 			flag = random.nextInt(populationNum / 10);
 			childChromosomeList[k] = parentChromosomeList[flag];
@@ -195,7 +203,7 @@ public class TSPGenerateAlgorithm {
 		int mid = length / 2;
 		CompletableFuture<TSPChromosome[]> parGenerate1 = parGenerate(allChromosomeList, 0, mid - 1);
 		CompletableFuture<TSPChromosome[]> parGenerate2 = parGenerate(allChromosomeList, mid, length - 1);
-		CompletableFuture<TSPChromosome[]> parsort = parGenerate1.thenCombine(parGenerate2, (xs1, xs2) -> {
+		CompletableFuture<TSPChromosome[]> parGenerate = parGenerate1.thenCombine(parGenerate2, (xs1, xs2) -> {
 			TSPChromosome[] result = new TSPChromosome[length];
 			for (int i = 0; i < mid; i++)
 				result[i] = xs1[i];
@@ -204,29 +212,30 @@ public class TSPGenerateAlgorithm {
 			return result;
 		});
 
-		parsort.whenComplete((result, throwable) -> {
+		parGenerate.whenComplete((result, throwable) -> {
 			if (throwable != null) {
-				parsort.completeExceptionally(throwable);
+				parGenerate.completeExceptionally(throwable);
 			} else {
 				for (int i = 0; i < result.length; i++) {
 					childChromosomeList[i] = result[i];
 				}
 			}
 		});
-		parsort.join();
+		parGenerate.join();
 	}
 
 	private CompletableFuture<TSPChromosome[]> parGenerate(TSPChromosome[] generatingList, int from, int to) {
 		return CompletableFuture.supplyAsync(() -> {
-			TSPChromosome[] tempList = new TSPChromosome[to-from+1];
+			TSPChromosome[] tempList = new TSPChromosome[to - from + 1];
 			TSPChromosome[] generatedList = new TSPChromosome[to - from + 1];
-			
-			for(int i=from;i<=to;i++)
-				tempList[i-from] = generatingList[i];
+
+			for (int i = from; i <= to; i++)
+				tempList[i - from] = generatingList[i];
 
 			Arrays.sort(tempList);
 			int flag;
-			for (int k = 0; k < tempList.length; k++) {
+			generatedList[0]=tempList[0];
+			for (int k = 1; k < tempList.length; k++) {
 				// Copy the best ten percentage of entities from parents to children
 				flag = random.nextInt(tempList.length / 10);
 				generatedList[k] = tempList[flag];
@@ -257,14 +266,14 @@ public class TSPGenerateAlgorithm {
 			parentChromosomeList = childChromosomeList.clone();
 			calDistanceList();
 			calFitnessList();
-			System.out.println("Generation: " + i + " is " + bestEntity());
+			System.out.println("The Shortest Distance of Generation: " + i + " is " + bestEntity());
 		}
 		System.out.println("The best phenotype is " + Arrays.toString(bestPhenotypeList));
 		System.out.println("The best genotype is " + Arrays.toString(bestGenotypeList));
 	}
 
 	public static void main(String[] args) throws Exception {
-		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30, "data.txt");
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30000, "data.txt");
 
 		// Test initDataFromTxtFile() and distance()
 		// System.out.println(tspGenerateAlgorithm.distanceList);

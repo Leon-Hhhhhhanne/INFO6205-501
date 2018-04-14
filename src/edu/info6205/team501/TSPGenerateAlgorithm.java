@@ -104,7 +104,7 @@ public class TSPGenerateAlgorithm {
 		int dij;
 		int xd = xAxisList.get(from) - xAxisList.get(to);
 		int yd = yAxisList.get(from) - yAxisList.get(to);
-		double rij = Math.sqrt((xd * xd + yd * yd) / 10.0);
+		double rij = Math.sqrt(xd * xd + yd * yd);
 		int tij = (int) Math.round(rij);
 		if (tij < rij)
 			dij = tij + 1;

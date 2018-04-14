@@ -6,14 +6,12 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Generated;
+import org.junit.experimental.theories.Theories;
 
 /**
- * @author Ang Li
+ * @author Ang Li, Xiaohan Zhao
  *
  */
 public class TSPGenerateAlgorithm {
@@ -35,6 +33,8 @@ public class TSPGenerateAlgorithm {
 	private int[] distanceList;
 	private double[] fitnessList;
 	private int populationNum;
+	private int[] bestPhenotypeList;
+	private String[] bestGenotypeList;
 
 	public TSPGenerateAlgorithm(int populationNum,String filename) throws Exception{
 		this.populationNum = populationNum;
@@ -175,10 +175,17 @@ public class TSPGenerateAlgorithm {
 
 	// Calculate the best entity of the current generation
 	public int bestEntity() {
+		int location = 0;
 		int shortestDistance = distanceList[0];
+		bestGenotypeList = new String[cityNum];
+		bestPhenotypeList = new int[cityNum];
 		for (int i = 1; i < populationNum; i++)
-			if (distanceList[i] < shortestDistance)
+			if (distanceList[i] < shortestDistance) {
 				shortestDistance = distanceList[i];
+				location=i;
+			}
+		bestGenotypeList=parentChromosomeList[location].getGenoTypeList();
+		bestPhenotypeList=parentChromosomeList[location].getPhenotypeList();
 		return shortestDistance;
 	}
 
@@ -192,6 +199,8 @@ public class TSPGenerateAlgorithm {
 			calFitnessList();
 			System.out.println("Generation: " + i + " is " + bestEntity());
 		}
+		System.out.println("The best phenotype is "+Arrays.toString(bestPhenotypeList));
+		System.out.println("The best genotype is "+Arrays.toString(bestGenotypeList));
 	}
 
 	public static void main(String[] args) throws Exception {

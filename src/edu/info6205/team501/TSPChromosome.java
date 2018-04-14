@@ -1,6 +1,5 @@
 package edu.info6205.team501;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,179 +10,221 @@ import java.util.Random;
  */
 public class TSPChromosome implements Comparable<TSPChromosome> {
 
-    private Random random = new Random();
-    private int[] chromosomeList;
-    private int chromosomeLength;
-    private int weight;
-    private int[][] map;
+	private Random random = new Random();
+	private int[] phenotypeList;
+	private String[] genotypeList;
+	private int chromosomeLength;
+	private int weight;
+	private int[][] map;
 
-    // Generate a random chromosome list randomly
-    public TSPChromosome(int chromosomeLength, Random random, int[][] givenMap) {
-        this.chromosomeLength = chromosomeLength;
-        this.chromosomeList = new int[chromosomeLength];
-        this.map = givenMap.clone();
+	// Generate a random chromosome list randomly
+	public TSPChromosome(int chromosomeLength, Random random, int[][] givenMap) {
+		this.chromosomeLength = chromosomeLength;
+		this.phenotypeList = new int[chromosomeLength];
+		this.genotypeList = new String[chromosomeLength];
+		this.map = givenMap.clone();
 
-        // Generate the random gene list using arraylist
-        ArrayList<Integer> tempList = new ArrayList<>();
-        int counter = 0;
-        while (counter < chromosomeLength) {
-            int randomCity = Math.abs(random.nextInt() % chromosomeLength);
-            if (!tempList.contains(randomCity)) {
-                tempList.add(randomCity);
-                counter++;
-            }
-        }
+		// Generate the random gene list using arraylist
+		ArrayList<Integer> tempList = new ArrayList<>();
+		int counter = 0;
+		while (counter < chromosomeLength) {
+			int randomCity = Math.abs(random.nextInt() % chromosomeLength);
+			if (!tempList.contains(randomCity)) {
+				tempList.add(randomCity);
+				counter++;
+			}
+		}
 
-        // Copy the temp list to the chromosome list
-        for (int i = 0; i < chromosomeLength; i++)
-            chromosomeList[i] = tempList.get(i);
+		// Copy the temp list to the chromosome list
+		for (int i = 0; i < chromosomeLength; i++) {
+			phenotypeList[i] = tempList.get(i);
+			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
+		}
+			
+		// Initialize
+		initialize();
+	}
 
-        // Initialize
-        initialize();
-    }
+	// Set the chromosome list to the given list
+	public TSPChromosome(int[] givenChromosomeList, int[][] givenMap) {
+		this.chromosomeLength = givenChromosomeList.length;
+		this.phenotypeList = givenChromosomeList.clone();
+		this.genotypeList = new String[chromosomeLength];
+		this.map = givenMap.clone();
+		for (int i = 0; i < chromosomeLength; i++) 
+			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
 
-    // Set the chromosome list to the given list
-    public TSPChromosome(int[] givenChromosomeList, int[][] givenMap) {
-        this.chromosomeLength = givenChromosomeList.length;
-        this.chromosomeList = givenChromosomeList.clone();
-        this.map = givenMap.clone();
+		// Initialize
+		initialize();
+	}
 
-        // Initialize
-        initialize();
-    }
+	public int getChromosomeLength() {
+		return chromosomeLength;
+	}
 
-    public int getChromosomeLength() {
-        return chromosomeLength;
-    }
+	public int[] getPhenotypeList() {
+		return phenotypeList;
+	}
+	
+	public String[] getGenoTypeList() {
+		return genotypeList;
+	}
 
-    public int[] getChromosomeList() {
-        return chromosomeList;
-    }
+	public int[][] getMap() {
+		return map;
+	}
 
-    public int[][] getMap() {
-        return map;
-    }
+	// Phenotype List to Genotype List
+	private String phenotypeToGenotype(int phenotype) {
+		if (phenotype >= 256)
+			throw new IllegalArgumentException();
+		int num1 = phenotype / 64;
+		int num2 = (phenotype - num1 * 64) / 16;
+		int num3 = (phenotype - num1 * 64 - num2 * 16) / 4;
+		int num4 = phenotype - num1 * 64 - num2 * 16 - num3 * 4;
+		return toGene(num1) + toGene(num2) + toGene(num3) + toGene(num4);
+	}
 
-    // Get the weight
-    public int getWeight() {
-        return this.weight;
-    }
+	private String toGene(int pheno) {
+		switch (pheno) {
+		case 0:
+			return "A";
+		case 1:
+			return "G";
+		case 2:
+			return "C";
+		case 3:
+			return "T";
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
 
-    // Initialize the parameters:weight
-    public void initialize() {
-        this.weight = calWeight();
-    }
+	// Get the weight
+	public int getWeight() {
+		return this.weight;
+	}
 
-    // Calculate the whole weight of this chromosome list
-    public int calWeight() {
-        int totalWeight = 0;
-        for (int i = 0; i < chromosomeLength - 1; i++)
-            totalWeight += map[chromosomeList[i]][chromosomeList[i + 1]];
-        return totalWeight;
-    }
+	// Initialize the parameters:weight
+	public void initialize() {
+		this.weight = calWeight();
+	}
 
-    // Cross over with another chromosome list
-    public TSPChromosome crossOver(TSPChromosome that) {
-        int[] newChromosomeList = new int[chromosomeLength];
-        // Random location from 1 to chromosome length - 1
-        int randomLocation = Math.abs(random.nextInt() % (chromosomeLength - 1)) + 1;
+	// Calculate the whole weight of this chromosome list
+	public int calWeight() {
+		int totalWeight = 0;
+		for (int i = 0; i < chromosomeLength - 1; i++)
+			totalWeight += map[phenotypeList[i]][phenotypeList[i + 1]];
+		return totalWeight;
+	}
 
-        // The start (from random location to end) gene list are from this
-        for (int i = 0, j = randomLocation; j < chromosomeLength; i++, j++)
-            newChromosomeList[i] = chromosomeList[j];
+	// Cross over with another chromosome list
+	public TSPChromosome crossOver(TSPChromosome that) {
+		int[] newChromosomeList = new int[chromosomeLength];
+		// Random location from 1 to chromosome length - 1
+		int randomLocation = Math.abs(random.nextInt() % (chromosomeLength - 1)) + 1;
 
-        // The other gene list are from that and the repeated genes are removed
-        for (int i = chromosomeLength - randomLocation, j = 0; i < chromosomeLength; ) {
-            newChromosomeList[i] = that.chromosomeList[j++];
-            int k;
-            for (k = 0; k < chromosomeLength - randomLocation; k++)
-                if (newChromosomeList[k] == newChromosomeList[i])
-                    break;
-            if (k == chromosomeLength - randomLocation)
-                i++;
+		// The start (from random location to end) gene list are from this
+		for (int i = 0, j = randomLocation; j < chromosomeLength; i++, j++)
+			newChromosomeList[i] = phenotypeList[j];
 
-        }
-        return new TSPChromosome(newChromosomeList, this.map);
-    }
+		// The other gene list are from that and the repeated genes are removed
+		for (int i = chromosomeLength - randomLocation, j = 0; i < chromosomeLength;) {
+			newChromosomeList[i] = that.phenotypeList[j++];
+			int k;
+			for (k = 0; k < chromosomeLength - randomLocation; k++)
+				if (newChromosomeList[k] == newChromosomeList[i])
+					break;
+			if (k == chromosomeLength - randomLocation)
+				i++;
 
-    // Mutate itself randomly
-    public void mutation() {
-        int randomLocation1, randomLocataion2, temp, count;
+		}
+		return new TSPChromosome(newChromosomeList, this.map);
+	}
 
-        count = Math.abs(random.nextInt() % chromosomeLength);
+	// Mutate itself randomly
+	public void mutation() {
+		int randomLocation1, randomLocataion2, temp, count;
 
-        // Generate two different gene
-        randomLocation1 = Math.abs(random.nextInt() % chromosomeLength);
-        randomLocataion2 = Math.abs(random.nextInt() % chromosomeLength);
-        while (randomLocation1 == randomLocataion2)
-            randomLocataion2 = Math.abs(random.nextInt() % chromosomeLength);
+		count = Math.abs(random.nextInt() % chromosomeLength);
 
-        // Exchange the gene located in the random locations
-        temp = chromosomeList[randomLocation1];
-        chromosomeList[randomLocation1] = chromosomeList[randomLocataion2];
-        chromosomeList[randomLocataion2] = temp;
-    }
+		// Generate two different gene
+		randomLocation1 = Math.abs(random.nextInt() % chromosomeLength);
+		randomLocataion2 = Math.abs(random.nextInt() % chromosomeLength);
+		while (randomLocation1 == randomLocataion2)
+			randomLocataion2 = Math.abs(random.nextInt() % chromosomeLength);
 
-    public boolean isValidateChromosome() {
-        Map<Integer, Integer> validateMap = new HashMap<>();
-        for (int i = 0; i < chromosomeLength; i++) {
-            if (null == validateMap.get(chromosomeList[i]))
-                validateMap.put(chromosomeList[i], 0);
-            else
-                return false;
-        }
-        return true;
-    }
+		// Exchange the gene located in the random locations
+		temp = phenotypeList[randomLocation1];
+		phenotypeList[randomLocation1] = phenotypeList[randomLocataion2];
+		phenotypeList[randomLocataion2] = temp;
+		for (int i = 0; i < chromosomeLength; i++) 
+			genotypeList[i] = phenotypeToGenotype(phenotypeList[i]);
+	}
 
-    @Override
-    public int compareTo(TSPChromosome that) {
-        if (weight < that.weight)
-            return -1;
-        if (weight > that.weight)
-            return 1;
-        return 0;
-    }
+	public boolean isValidateChromosome() {
+		Map<Integer, Integer> validateMap = new HashMap<>();
+		for (int i = 0; i < chromosomeLength; i++) {
+			if (null == validateMap.get(phenotypeList[i]))
+				validateMap.put(phenotypeList[i], 0);
+			else
+				return false;
+		}
+		return true;
+	}
 
-    // Main method is for testing
-    public static void main(String[] args) throws Exception {
+	@Override
+	public int compareTo(TSPChromosome that) {
+		if (weight < that.weight)
+			return -1;
+		if (weight > that.weight)
+			return 1;
+		return 0;
+	}
 
-        /* Test the constructor using Random object */
-//        TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10, "data.txt");
-//        tspGenerateAlgorithm.initDataFromTxtFile("data.txt");
-//        TSPChromosome tspChromosome = new TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
-//                tspGenerateAlgorithm.distanceMap);
-//		 System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-//		 System.out.println(tspChromosome.chromosomeLength);
-        // TODO:Continue test if there are any repeated values in the list
+	// Main method is for testing
+	public static void main(String[] args) throws Exception {
 
-        /* Test the constructor using given list */
-//		 int[] testlist = { 1, 2, 3, 4, 5 };
-//		 tspChromosome = new TSPChromosome(testlist,tspGenerateAlgorithm.distanceMap);
-        // System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-        // System.out.println(tspChromosome.chromosomeLength);
+		/* Test the constructor using Random object */
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10, "data.txt");
+		// tspGenerateAlgorithm.initDataFromTxtFile("data.txt");
+		TSPChromosome tspChromosome = new TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
+				tspGenerateAlgorithm.distanceMap);
+		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+		// System.out.println(tspChromosome.chromosomeLength);
+		// TODO:Continue test if there are any repeated values in the list
 
-        /* Test the map obtained from the TSPGenerateAlgorithm */
-        // System.out.println(Arrays.toString(tspChromosome.map[4]));
+		/* Test the constructor using given list */
+		// int[] testlist = { 1, 2, 3, 4, 5 };
+		// tspChromosome = new TSPChromosome(testlist,tspGenerateAlgorithm.distanceMap);
+		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+		// System.out.println(tspChromosome.chromosomeLength);
 
-        /* Test the weight */
-//        tspChromosome.initialize();
-        // System.out.println(tspChromosome.calWeight(tspChromosome.map));
+		/* Test the map obtained from the TSPGenerateAlgorithm */
+		// System.out.println(Arrays.toString(tspChromosome.map[4]));
 
-        /* Test the mutation function */
-        // System.out.println(Arrays.toString(tspChromosome.chromosomeList));
-//        tspChromosome.mutation();
-        // System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+		/* Test the weight */
+		// tspChromosome.initialize();
+		// System.out.println(tspChromosome.calWeight(tspChromosome.map));
 
-        /* Test the crossover function */
-        // TSPChromosome newtspChromosome = new
-        // TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
-        // tspGenerateAlgorithm.distanceMap);
-        // System.out.println("Father: " +
-        // Arrays.toString(tspChromosome.chromosomeList));
-        // System.out.println("Mother: " +
-        // Arrays.toString(newtspChromosome.chromosomeList));
-        // System.out.println("Child: " +
-        // Arrays.toString(tspChromosome.crossOver(newtspChromosome).chromosomeList));
-    }
+		/* Test the mutation function */
+		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+		// tspChromosome.mutation();
+		// System.out.println(Arrays.toString(tspChromosome.chromosomeList));
+
+		/* Test the crossover function */
+		// TSPChromosome newtspChromosome = new
+		// TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
+		// tspGenerateAlgorithm.distanceMap);
+		// System.out.println("Father: " +
+		// Arrays.toString(tspChromosome.chromosomeList));
+		// System.out.println("Mother: " +
+		// Arrays.toString(newtspChromosome.chromosomeList));
+		// System.out.println("Child: " +
+		// Arrays.toString(tspChromosome.crossOver(newtspChromosome).chromosomeList));
+
+		/* Test the phenotype to genotype function */
+		// System.out.println(tspChromosome.phenotypeToGenotype(25));
+	}
 
 }

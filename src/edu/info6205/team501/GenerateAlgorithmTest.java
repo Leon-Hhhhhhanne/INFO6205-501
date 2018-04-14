@@ -2,9 +2,6 @@ package edu.info6205.team501;
 
 import org.junit.Test;
 
-
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 public class GenerateAlgorithmTest {

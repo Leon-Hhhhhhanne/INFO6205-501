@@ -186,5 +186,5 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
   - ![InitialUI](screenshot/InitialUI.png)
 - After uploaded a data file, user can see the parameters including shortest distance, the best genotype and phenotype from the UI, the screenshot is as following (the conclusion is obtained by data.txt)
   - ![DataConclusion](screenshot/DataConclusion.png)
-- Another output (the conclusion is obtained by data.txt)
+- Another output (the conclusion is obtained by test2.txt)
   - ![Test2Conclusion](screenshot/Test2Conclusion.png)

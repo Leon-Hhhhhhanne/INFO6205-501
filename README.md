@@ -177,8 +177,8 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
   - ![GenerateAlgorithmTestClassDiagram](screenshot/GenerateAlgorithmTestClassDiagram.png)
 
 ## Input and output files
-- Input files, click
-- Output files, click
+- Input files, click [Input Files](https://github.com/Leon-Hhhhhhanne/TSPGenerateAlgorithm/tree/master/input)
+- Output files, click [Output Files](https://github.com/Leon-Hhhhhhanne/TSPGenerateAlgorithm/tree/master/output)
 
 ## User Interface (Output)
 - We created an user interface which users can upload file and run the generation algorithm.

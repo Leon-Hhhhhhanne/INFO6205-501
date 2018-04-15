@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 public class TSPGenerateAlgorithm {
 
 	private final static double P_DEFAULT_CROSS = 0.95;
-	private final static double P_DEFALUT_MUTATION = 0;
+	private final static double P_DEFALUT_MUTATION = 0.00001;
 	private final static int GENERATION_NUM = 100;
 	private final static int DEFAULT_POPULATION_NUM = 30000;
 
@@ -258,7 +258,7 @@ public class TSPGenerateAlgorithm {
 	}
 
 	public static void main(String[] args) throws Exception {
-		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30000, "data.txt");
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30000, "input/data.txt");
 		tspGenerateAlgorithm.generate();
 	}
 }

@@ -97,7 +97,7 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
   private final static int DEFAULT_POPULATION_NUM = 30000;
   ```
   - P_DEFAULT_CROSS: The possibility of cross over happens
-  - P_DEFALUT_MUTATION: The possibility of mutation happens
+  - P_DEFAULT_MUTATION: The possibility of mutation happens
   - GENERATION_NUM: Max generation number
   - DEFAULT_POPULATION_NUM: The population number of each generation
 - initDataFromTxtFile(String filename)
@@ -120,14 +120,14 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
 - select()
   - This method is used to choose good entities to generate a child generation and cull the bad entities
   - The chromosomes are sorted by the weight to be chosen properly
-  - The best entity of each generation will keep alive without any change to keep the best genetype of old generation
+  - The best entity of each generation will keep alive without any change to keep the best genotype of old generation
 - evolution()
-  - This method is used to crossover and mutation of the new generation's genetype
-  - In our algorithm, the possibility of crossover is much higher than the possibility of mutaion, this is a experiment conclusion
+  - This method is used to crossover and mutation of the new generation's genotype
+  - In our algorithm, the possibility of crossover is much higher than the possibility of mutation, this is a experiment conclusion
 - bestEntity()
   - This method is used to calculate the best entity of each generation
 - generate()
-  - This method is used to call the calFitnessList(), select(), evoluition(), bestEntity() and some other methods in the properly order
+  - This method is used to call the calFitnessList(), select(), evolution(), bestEntity() and some other methods in the properly order
   - This is used to print some information of each generation and the best entity
   - The default generation number is GENERATION_NUM
 
@@ -168,7 +168,7 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
 		});
 	}
   ```
-- We divided population into two sub-populations and generate each sub-population in thread seperatly, and after we complete generate all the sub-populations, we will merge the best entities of each sub-population together as the new generation and copy the result to the new chromosome list.
+- We divided population into two sub-populations and generate each sub-population in thread separately, and after we complete generate all the sub-populations, we will merge the best entities of each sub-population together as the new generation and copy the result to the new chromosome list.
 
 ## Unit tests
 - ChromosomeTest
@@ -186,5 +186,5 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
 - We created an user interface which users can upload file and run the generation algorithm.
 - At first, the user interface is as following, and user can upload a data file to it, the screenshot is as following:
   - ![InitialUI](screenshot/InitialUI.png)
-- After uploaded a data file, user can see the paramethers including shortest distance, the best genotype and phenotype from the UI, the screenshot is as following (the conclusion is obtaind by test2.txt)
-  - ![Test2Conclusion](screenshot/Test2Conclusion.jpg)
+- After uploaded a data file, user can see the parameters including shortest distance, the best genotype and phenotype from the UI, the screenshot is as following (the conclusion is obtained by data.txt)
+  - ![Test2Conclusion](screenshot/Test2Conclusion.png)

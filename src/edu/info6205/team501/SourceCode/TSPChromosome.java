@@ -137,7 +137,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 		double totalWeight = 0;
 		for (int i = 0; i < chromosomeLength - 1; i++)
 			totalWeight += map[phenotypeList[i]][phenotypeList[i + 1]];
-		totalWeight += map[phenotypeList[chromosomeLength - 1]][0];
+		totalWeight += map[phenotypeList[chromosomeLength - 1]][phenotypeList[0]];
 		return totalWeight;
 	}
 
@@ -206,7 +206,7 @@ public class TSPChromosome implements Comparable<TSPChromosome> {
 	// Main method is for testing
 	public static void main(String[] args) throws Exception {
 
-		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10, "data.txt");
+		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(10, "input/data.txt");
 		TSPChromosome tspChromosome = new TSPChromosome(tspGenerateAlgorithm.cityNum, new Random(),
 				tspGenerateAlgorithm.distanceMap);
 	}

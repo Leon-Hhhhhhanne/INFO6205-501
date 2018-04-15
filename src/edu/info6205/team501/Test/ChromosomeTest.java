@@ -10,7 +10,7 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class ChromosomeTest {
-    private TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(5, "test.txt");
+    private TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(5, "input/test.txt");
 
     public ChromosomeTest() throws Exception {
     }

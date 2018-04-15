@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GenerateAlgorithmTest {
-    TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30,"test.txt");
+    TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30,"input/test.txt");
 
     public GenerateAlgorithmTest() throws Exception {
     }

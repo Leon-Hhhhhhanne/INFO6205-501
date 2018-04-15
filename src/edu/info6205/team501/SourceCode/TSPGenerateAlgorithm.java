@@ -1,16 +1,13 @@
 
-package edu.info6205.team501;
+package edu.info6205.team501.SourceCode;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.security.KeyStore.PrivateKeyEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
-
-import org.junit.experimental.theories.Theories;
 
 /**
  * @author Ang Li, Xiaohan Zhao
@@ -18,13 +15,13 @@ import org.junit.experimental.theories.Theories;
  */
 public class TSPGenerateAlgorithm {
 
-	private final static double P_DEFAULT_CROSS = 1;
+	private final static double P_DEFAULT_CROSS = 0.95;
 	private final static double P_DEFALUT_MUTATION = 0;
 	private final static int GENERATION_NUM = 100;
 	private final static int DEFAULT_POPULATION_NUM = 30000;
 
 	public int cityNum;
-	public int[][] distanceMap;
+	public double[][] distanceMap;
 
 	private ArrayList<Integer> xAxisList;
 	private ArrayList<Integer> yAxisList;
@@ -33,7 +30,7 @@ public class TSPGenerateAlgorithm {
 	private TSPChromosome[] childChromosomeList;
 	private Random random;
 
-	private int[] distanceList;
+	private double[] distanceList;
 	private double[] fitnessList;
 	private int populationNum;
 	private int[] bestPhenotypeList;
@@ -57,7 +54,7 @@ public class TSPGenerateAlgorithm {
 		return childChromosomeList;
 	}
 
-	public int[] getDistanceList() {
+	public double[] getDistanceList() {
 		return distanceList;
 	}
 
@@ -95,10 +92,10 @@ public class TSPGenerateAlgorithm {
 
 		// Initialize the parameters
 		cityNum = xAxisList.size();
-		distanceMap = new int[cityNum][cityNum];
+		distanceMap = new double[cityNum][cityNum];
 		parentChromosomeList = new TSPChromosome[populationNum];
 		childChromosomeList = new TSPChromosome[populationNum];
-		distanceList = new int[populationNum];
+		distanceList = new double[populationNum];
 		fitnessList = new double[populationNum];
 
 		// initialize the distance between every two nodes
@@ -122,26 +119,19 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// Pseudo-Euclidean distance
-	public int distance(int from, int to) {
+	public double distance(int from, int to) {
 		if (from == to)
 			return 0;
 		int dij;
 		int xd = xAxisList.get(from) - xAxisList.get(to);
 		int yd = yAxisList.get(from) - yAxisList.get(to);
-		double rij = Math.sqrt(xd * xd + yd * yd);
-		int tij = (int) Math.round(rij);
-		if (tij < rij)
-			dij = tij + 1;
-		else
-			dij = tij;
-		return dij;
+		return Math.sqrt((xd * xd + yd * yd));
 	}
 
 	// Calculate the distance list using the current generation
 	public void calDistanceList() {
-		for (int i = 0; i < populationNum; i++) {
+		for (int i = 0; i < populationNum; i++)
 			distanceList[i] = parentChromosomeList[i].getWeight();
-		}
 	}
 
 	// Calculate the fitness list using the current generation
@@ -183,9 +173,9 @@ public class TSPGenerateAlgorithm {
 	}
 
 	// Calculate the best entity of the current generation
-	public int bestEntity() {
+	public double bestEntity() {
 		int location = 0;
-		int shortestDistance = distanceList[0];
+		double shortestDistance = distanceList[0];
 		bestGenotypeList = new String[cityNum];
 		bestPhenotypeList = new int[cityNum];
 		for (int i = 1; i < populationNum; i++)
@@ -205,10 +195,8 @@ public class TSPGenerateAlgorithm {
 		CompletableFuture<TSPChromosome[]> parGenerate2 = parGenerate(allChromosomeList, mid, length - 1);
 		CompletableFuture<TSPChromosome[]> parGenerate = parGenerate1.thenCombine(parGenerate2, (xs1, xs2) -> {
 			TSPChromosome[] result = new TSPChromosome[length];
-			for (int i = 0; i < mid; i++)
-				result[i] = xs1[i];
-			for (int i = mid; i < length; i++)
-				result[i] = xs2[i - mid];
+			System.arraycopy(xs1, 0, result, 0, mid);
+			System.arraycopy(xs2, 0, result, mid, length - mid);
 			return result;
 		});
 
@@ -216,9 +204,7 @@ public class TSPGenerateAlgorithm {
 			if (throwable != null) {
 				parGenerate.completeExceptionally(throwable);
 			} else {
-				for (int i = 0; i < result.length; i++) {
-					childChromosomeList[i] = result[i];
-				}
+				System.arraycopy(result, 0, childChromosomeList, 0, result.length);
 			}
 		});
 		parGenerate.join();
@@ -229,8 +215,7 @@ public class TSPGenerateAlgorithm {
 			TSPChromosome[] tempList = new TSPChromosome[to - from + 1];
 			TSPChromosome[] generatedList = new TSPChromosome[to - from + 1];
 
-			for (int i = from; i <= to; i++)
-				tempList[i - from] = generatingList[i];
+			System.arraycopy(generatingList, from, tempList, 0, to + 1 - from);
 
 			Arrays.sort(tempList);
 			int flag;
@@ -274,56 +259,6 @@ public class TSPGenerateAlgorithm {
 
 	public static void main(String[] args) throws Exception {
 		TSPGenerateAlgorithm tspGenerateAlgorithm = new TSPGenerateAlgorithm(30000, "data.txt");
-
-		// Test initDataFromTxtFile() and distance()
-		// System.out.println(tspGenerateAlgorithm.distanceList);
-		// System.out.println(tspGenerateAlgorithm.xAxisList);
-		// System.out.println(tspGenerateAlgorithm.yAxisList);
-
-		// Test randomChromosome()
-		// System.out.println(tspGenerateAlgorithm.randomChromosome());
-		// System.out.println(tspGenerateAlgorithm.randomChromosome().size());
-		// System.out.println(tspGenerateAlgorithm.cityNum);
-
-		// Test the first generation of chromosome
-		// System.out.println(tspGenerateAlgorithm.parentChromosomeList);
-
-		// Test evaluate()
-		// System.out.println(tspGenerateAlgorithm.evaluateDistance(tspGenerateAlgorithm.parentChromosomeList.get(0)));
-
-		// Test the fitness list
-		// System.out.println(tspGenerateAlgorithm.fitnessList);
-
-		// tspGenerateAlgorithm.generate();
-		// System.out.println(tspGenerateAlgorithm.bestEntity);
-		// System.out.println(tspGenerateAlgorithm.shortestDistance);
-		// System.out.println(tspGenerateAlgorithm.childChromosomeList);
-
-		// Test the final situation
-		// System.out.println(tspGenerateAlgorithm.shortestPathList);
-		// System.out.println(tspGenerateAlgorithm.shortestDistance);
-
-		/* Test the map */
-		// System.out.println(Arrays.toString(tspGenerateAlgorithm.distanceMap[1]));
-
-		/* Test the select function */
-		// tspGenerateAlgorithm.select();
-		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
-		// System.out
-		// .println("Parent: " +
-		// Arrays.toString(tspGenerateAlgorithm.parentChromosomeList[i].chromosomeList));
-		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
-		// System.out.println("Child: " +
-		// Arrays.toString(tspGenerateAlgorithm.childChromosomeList[i].chromosomeList));
-
-		/* Test the evolution function */
-		// tspGenerateAlgorithm.evolution();
-		// System.out.println("------- After evolution -------");
-		// for (int i = 0; i < tspGenerateAlgorithm.populationNum; i++)
-		// System.out.println("Child: " +
-		// Arrays.toString(tspGenerateAlgorithm.childChromosomeList[i].chromosomeList));
-
-		/* Test the generate function */
 		tspGenerateAlgorithm.generate();
 	}
 }

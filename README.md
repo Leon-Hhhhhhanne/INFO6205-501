@@ -12,7 +12,7 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
 - Created a genetic algorithm to solve the travelling salesman problem with clearly comments
 - Used parallel computation mechanism to divide population up into sub-populations and merge the next generations for each colony in parallel
 - Created unit tests to test most of the methods to keep the project operating properly
-- Created several input data files to be used in this algorithm
+- Created several input data files to be used in this algorithm and output data files to store the output
 - Created a user interface using Panel to show the progress of the evolution
 
 ## Class Diagram
@@ -188,3 +188,13 @@ Reference: [TSP in Wikipedia](https://en.wikipedia.org/wiki/Travelling_salesman_
   - ![DataConclusion](screenshot/DataConclusion.png)
 - Another output (the conclusion is obtained by test2.txt)
   - ![Test2Conclusion](screenshot/Test2Conclusion.png)
+
+## Conclusion
+In sum, we created a generate algorithm to solve the travelling salesman problem. In the evidence of user interface output, we can see that the algorithm will find the shortest path in travelling salesman problem whatever the input is. While the algorithm didn't work so well in the earlier versions. By change some parameters, we found many parameters have influences to the algorithm:
+- Population Number: If we choose large population number, the algorithm will get the bese entity earlier. That means to get the best entity in a single generate algorithm experiment, the larger the population is, the smaller generation number will be. And we need to choose larger population number for larger city number, or we will not got the correct answer even the generation number is very large.
+- Generation Number: We need enough generations to garantee the best genes are choosen together and put in a single entity. In most case, if we keep the population number constantly, the more city we need to visit, the larger generation number will be needed.
+- Crossover possibility: We found crossover is an amazing way to envolve beter entities. That is because in every generation, we choose good entities to generate new population, so the crossover will combine good genes in different entities together as new entity. This is pretty efficient. So we set the crossover possibility very close to "1" to make our algorithm efficiently.
+- Mutaion possibility: Mutaion is not a good idea in our algorithm, we found if we set the mutaion possibility, the program will be less efficient (need larger generation number to get the best entity). But what's interesting, the mutation is helpful to prevent local optimum happening. We set the mutation possibility close to "0" because our biodiversity is pretty well (population number is large enough to cover almost all the possible genotype segments). So if you need to solve a TSP with very large city number and limited population number, mutaion is required.
+- Fitness and cull: We use the total distance of each entity to calculate the fitness function, fitness of each entity is the reciprocal of distance divided by the sum of fitness of all the entities in the given population. And we need to select some good entities to generate new population. In this algorithm, we select top 10% of sorted entities. Bigger number will be less efficient because too much bad genes included while smaller number will lose the diversity and run into the local optimum, so 10% is good. Self-crossover is allowed and the best entity of each generation will keep going without any mutaion.
+Although we did so much, the algorithm will still not generate the optimum solution (very very rare when the input is exactly large but exist). That is because the purpose idea of generation algorithm is use evolution to generate better and better entities but optimum can not be garanteed. Bigger population number and more generations can make the algorithm better but more run time needed which is an nature contradiction between performance and efficiency.
+All in all, the generation algorithm is a great idea to solve such problems (like NPC problems) and can be used in our nature life. The only thing we need to know is how to write a fitness function of genotype and choose the properly parameters. The algorithm itself will do other things to generate a good entity.

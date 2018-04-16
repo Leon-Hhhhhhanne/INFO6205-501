@@ -1,5 +1,3 @@
-package edu.info6205.team501.Test;
-
 import edu.info6205.team501.SourceCode.TSPChromosome;
 import edu.info6205.team501.SourceCode.TSPGenerateAlgorithm;
 import org.junit.Test;
